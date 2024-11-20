@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Exemple Sass
+
+$light-gray: #f5f7fb;
+$dark-gray: #edf1ff;
+$text-gray:#505466;
+$black: rgb(15, 23, 41);
+$white: #ffffff;
+$primary-color: #5c6ae5;
+$primary-color-light: #6f7be6;
+$secondary-color: #008795;
+
+@mixin hover-effect {
+
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 1px 2px 11px rgba(15, 23, 41, 0.25);
+  }
+}
+@mixin after-properties {
+
+  content: '';
+  position: absolute;
+  display: block;
+}
+
+body {
+  background-color: $light-gray;
+  color: $black;
+}
+
+.bg-primary {
+  background-color: $primary-color;
+}
+
+.bg-white {
+  background-color: $white;
+}
+
+.color-white {
+  color: $white;
+}
+.color-primary {
+  color: $primary-color;
+}
+
+.color-text-gray {
+  color: $text-gray;
+}
+
+.bg-black {
+  background-color: $black;
+}
+
+.wrapper {
+  background-color: $white;
+  padding: 20px;
+
+  &::-webkit-scrollbar {
+    width: 0.8rem;
+    border-radius: 4px;
+  }
+   
+  &::-webkit-scrollbar-track {
+    background-color: $dark-gray;
+  }
+   
+  &::-webkit-scrollbar-thumb {
+    background-color: #a8b2bd;
+    border-radius: 6px;
+  }
+}
+
+.chatbot-content {
+  .chatbot {
+    border-radius: 8px 8px 8px 0;
+    background-color: $light-gray;
+    color: $black;
+  }
+}
+
+.user {
+  border-radius: 8px 8px 0px 8px;
+  background-color: $secondary-color;
+  color: $white;
+}
+
+.option {
+  background-color: $white;
+  border: 1px solid $dark-gray;
+  @include hover-effect;
+
+  &.active {
+    border: 1.5px solid $primary-color;
+    color: $primary-color;
+    box-shadow: 0 0 0 0.25rem rgba(65, 107, 195, 0.25);
+    font-weight: 500;
+  }
+
+  .cercle {
+    content: '';
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: 1.5px solid $dark-gray;
+  }
+}
+
+.active {
+  .cercle {
+    background-color: $primary-color;
+    position: relative;
+    border-color: $primary-color;
+    box-shadow: 0 0 0 0.25rem rgba(65, 107, 195, 0.25);
+
+    &::after {
+    @include after-properties;
+      width: 0.5rem;
+      height: 0.5rem;
+      background-color: $white;
+      border-radius: 50%;
+      top: calc(50% - 0.25rem);
+      left: calc(50% - 0.25rem);
+    }
+  }
+}
+
+.avatar-wrapper {
+  padding: 8px;
+  border-radius: 8px 0 0 8px;
+  background-color: $light-gray;
+}
+
+.final-option {
+  @include hover-effect;
+}
+
+.card {
+  background-color: $white;
+  border: 1px solid $dark-gray;
+}
+
+.divider {
+  content: '';
+  background-color: $dark-gray;
+  height: 1px;
+}
+
+.link-active {
+  &::after {
+    @include after-properties;
+    bottom: 0;
+    left: 0.5rem;
+    height: 2px;
+    width: calc(100% - 1rem);
+    background-color: $primary-color;
+  }
+}
+
+.image-home {
+  animation: float 3s ease-in-out infinite;
+}
+
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
